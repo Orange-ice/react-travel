@@ -1,10 +1,41 @@
 import Header from './components/header';
 import Footer from './components/footer';
-import {Row, Col} from 'antd';
+import {Row, Col, Typography} from 'antd';
 import SideMenu from './components/sideMenu';
 import Carousel from './components/carousel';
+import ProductCollection, {Product} from './components/productCollection';
+import {popularRecommendation, domesticRecommendation, newArrivals} from './mock';
+import sideImage1 from './assets/images/sider_2019_12-09.png';
+import sideImage2 from './assets/images/sider_2019_02-04.png';
+import sideImage3 from './assets/images/sider_2019_02-04-2.png';
+
+interface ProductCollections {
+  id: string;
+  title: string;
+  sideImage: string;
+  products: Product[];
+  type: 'success' | 'danger' | 'warning';
+}
 
 function App() {
+
+  const productCollections: ProductCollections[] = [
+    {
+      id: 'popularRecommendation',
+      title: '热门推荐',
+      sideImage: sideImage1,
+      products: popularRecommendation,
+      type: 'warning'
+    },
+    {id: 'newArrivals', title: '新品上架', sideImage: sideImage2, products: newArrivals, type: 'danger'},
+    {
+      id: 'domesticRecommendation',
+      title: '国内热门',
+      sideImage: sideImage3,
+      products: domesticRecommendation,
+      type: 'success'
+    }
+  ];
 
   return (
     <div>
@@ -19,6 +50,18 @@ function App() {
               <Carousel/>
             </Col>
           </Row>
+
+          {productCollections.map(c => (
+            <ProductCollection
+              title={
+                <Typography.Title level={3} type={c.type}>
+                  {c.title}
+                </Typography.Title>
+              }
+              sideImage={c.sideImage}
+              products={c.products}
+            />
+          ))}
         </main>
       </div>
       <Footer/>

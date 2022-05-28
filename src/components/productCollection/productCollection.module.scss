@@ -1,0 +1,50 @@
+.wrapper {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.sideImage {
+  width: 180px;
+  display: block;
+  margin: 0 auto;
+}
+
+.products {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-areas: 'big big s1 s2'
+                        'big big s3 s4'
+                        's5 s6 s7 s8';
+  gap: 16px;
+  > div {
+    &:nth-child(1) {
+      grid-area: big;
+    }
+    &:nth-child(2) {
+      grid-area: s1;
+    }
+    &:nth-child(3) {
+      grid-area: s2;
+    }
+    &:nth-child(4) {
+      grid-area: s3;
+    }
+    &:nth-child(5) {
+      grid-area: s4;
+    }
+    &:nth-child(6) {
+      grid-area: s5;
+    }
+    &:nth-child(7) {
+      grid-area: s6;
+    }
+    &:nth-child(8) {
+      grid-area: s7;
+    }
+    &:nth-child(9) {
+      grid-area: s8;
+    }
+  }
+
+}
