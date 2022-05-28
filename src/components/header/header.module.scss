@@ -1,0 +1,42 @@
+.header {
+  padding-top: 8px;
+  background: #f5f5f5;
+  .top {
+    width: 88%;
+    margin: 0 auto 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .language {
+      margin-right: auto;
+      margin-left: 16px;
+    }
+  }
+
+  .title {
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    width: 88%;
+    margin: 0 auto;
+
+    &_wrapper {
+      background: #ffffff;
+    }
+
+    > img {height: 48px;}
+    > span {
+      font-size: 24px;
+      color: #03A9F4;
+      margin-right: 32px;
+    }
+    .input {width: 30%;}
+  }
+
+  .nav {
+    padding: 0 4%;
+    background: #1976D2;
+    color: #f5f5f5;
+  }
+}
