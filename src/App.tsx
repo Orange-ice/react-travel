@@ -2,6 +2,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import {Row, Col} from 'antd';
 import SideMenu from './components/sideMenu';
+import Carousel from './components/carousel';
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
               <SideMenu/>
             </Col>
             <Col span={18}>
-              mainContent
+              <Carousel/>
             </Col>
           </Row>
         </main>
