@@ -8,6 +8,7 @@ import {popularRecommendation, domesticRecommendation, newArrivals} from './mock
 import sideImage1 from './assets/images/sider_2019_12-09.png';
 import sideImage2 from './assets/images/sider_2019_02-04.png';
 import sideImage3 from './assets/images/sider_2019_02-04-2.png';
+import BusinessPartner from './components/businessPartner';
 
 interface ProductCollections {
   id: string;
@@ -53,6 +54,7 @@ function App() {
 
           {productCollections.map(c => (
             <ProductCollection
+              key={c.id}
               title={
                 <Typography.Title level={3} type={c.type}>
                   {c.title}
@@ -62,6 +64,8 @@ function App() {
               products={c.products}
             />
           ))}
+
+          <BusinessPartner/>
         </main>
       </div>
       <Footer/>
