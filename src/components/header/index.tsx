@@ -2,6 +2,8 @@ import s from './header.module.scss';
 import {Button, Dropdown, Input, Menu} from 'antd';
 import {GlobalOutlined} from '@ant-design/icons';
 import logo from '../../assets/logo.svg';
+import {useSelector} from '../../store/hooks';
+import React from 'react';
 
 const languageMenuItems = [
   {key: 'en', label: 'English'},
@@ -26,6 +28,11 @@ const navMenuItems = [
   {key: '16', label: '保险'},
 ];
 const Header = () => {
+
+  const {language, languageList} = useSelector(state => state);
+  React.useEffect(() => {
+    console.log(language, languageList);
+  }, []);
 
   return (
     <header className={s.header}>
