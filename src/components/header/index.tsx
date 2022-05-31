@@ -3,12 +3,10 @@ import {Button, Dropdown, Input, Menu} from 'antd';
 import {GlobalOutlined} from '@ant-design/icons';
 import logo from '../../assets/logo.svg';
 import {useSelector} from '../../store/hooks';
+import {useDispatch} from 'react-redux';
 import React from 'react';
+import {addLanguageActionCreator, changeLanguageActionCreator, Language} from '../../store/language/languageAction';
 
-const languageMenuItems = [
-  {key: 'en', label: 'English'},
-  {key: 'cn', label: '中文'},
-];
 const navMenuItems = [
   {key: '1', label: '旅游首页'},
   {key: '2', label: '周末游'},
@@ -28,22 +26,27 @@ const navMenuItems = [
   {key: '16', label: '保险'},
 ];
 const Header = () => {
-
   const {language, languageList} = useSelector(state => state);
-  React.useEffect(() => {
-    console.log(language, languageList);
-  }, []);
-
+  const dispatch = useDispatch();
   return (
     <header className={s.header}>
       <div className={s.top}>
         <span>让旅游更幸福</span>
         <Dropdown.Button
-          overlay={<Menu items={languageMenuItems}/>}
+          overlay={<Menu onClick={(info) => {
+            info.key === 'new' ?
+              dispatch(addLanguageActionCreator({name: '新语言', code: 'new_language'})) :
+              dispatch(changeLanguageActionCreator(info.key as Language));
+          }}>
+            {languageList.map(item => (
+              <Menu.Item key={item.code}>{item.name}</Menu.Item>
+            ))}
+            <Menu.Item key="new">添加新语言</Menu.Item>
+          </Menu>}
           icon={<GlobalOutlined/>}
           className={s.language}
         >
-          语言
+          {languageList.find(item => item.code === language)?.name || '语言'}
         </Dropdown.Button>
         <Button.Group>
           <Button>登录</Button>
