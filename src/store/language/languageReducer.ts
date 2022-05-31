@@ -1,4 +1,5 @@
 import {ADD_LANGUAGE, CHANGE_LANGUAGE, Language, LanguageActionTypes, LanguageListItem} from './languageAction';
+import i18next from 'i18next';
 
 export interface LanguageState {
   language: Language;
@@ -16,7 +17,7 @@ const defaultState: LanguageState = {
 const languageReducer = (state = defaultState, action: LanguageActionTypes) => {
   switch (action.type) {
     case CHANGE_LANGUAGE:
-      // TODO i18n 更新语言
+      i18next.changeLanguage(action.payload); // 目前这个处理不标准，有副作用
       return {
         ...state,
         language: action.payload

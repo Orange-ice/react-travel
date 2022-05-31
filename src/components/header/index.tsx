@@ -6,6 +6,7 @@ import {useSelector} from '../../store/hooks';
 import {useDispatch} from 'react-redux';
 import React from 'react';
 import {addLanguageActionCreator, changeLanguageActionCreator, Language} from '../../store/language/languageAction';
+import {useTranslation} from 'react-i18next';
 
 const navMenuItems = [
   {key: '1', label: '旅游首页'},
@@ -27,13 +28,14 @@ const navMenuItems = [
 ];
 const Header = () => {
   const {language, languageList} = useSelector(state => state);
+  const {t} = useTranslation();
   const dispatch = useDispatch();
   return (
     <header className={s.header}>
       <div className={s.top}>
-        <span>让旅游更幸福</span>
+        <span>{t('header.slogans')}</span>
         <Dropdown.Button
-          overlay={<Menu onClick={(info) => {
+          overlay={<Menu selectedKeys={[language]} onClick={(info) => {
             info.key === 'new' ?
               dispatch(addLanguageActionCreator({name: '新语言', code: 'new_language'})) :
               dispatch(changeLanguageActionCreator(info.key as Language));
